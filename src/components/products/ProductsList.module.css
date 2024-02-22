@@ -1,0 +1,25 @@
+.product-list-container {
+  background-color: #f1f3f5;
+}
+
+.list-header-1 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #868e96;
+}
+
+.list-header-2 {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+@media (max-width: 376px) {
+  .list-header-1 {
+    font-size: 0.75rem;
+  }
+
+  .list-header-2 {
+    font-size: 1rem;
+  }
+}

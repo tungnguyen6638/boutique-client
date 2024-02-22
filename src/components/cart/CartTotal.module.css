@@ -1,0 +1,16 @@
+.total-header {
+  color: #212529;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+.total {
+  color: #212529;
+  font-size: 1rem;
+}
+
+.coupon > button {
+  border: 1px #ff922b solid;
+  background-color: #ff922b;
+  color: #f1f3f5;
+}

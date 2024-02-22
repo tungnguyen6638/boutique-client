@@ -1,0 +1,42 @@
+.add-container {
+  background-color: #f1f3f5;
+}
+
+.shipping-container {
+  background-color: #ff922b;
+}
+
+.add-header {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #343a40;
+}
+
+.add-text,
+.add-text-friends {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #f1f3f5;
+}
+
+.add-text-friends {
+  color: #868e96;
+}
+
+.btn-subcribe > a {
+  text-decoration: none;
+  font-style: normal;
+  background-color: #ff922b;
+  border: 2px #ff922b solid;
+  color: #f1f3f5;
+}
+
+.btn-subcribe > a:hover {
+  border: 1px #ff922b solid;
+}
+
+.input {
+  border: none;
+}

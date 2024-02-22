@@ -1,0 +1,26 @@
+.page-banner {
+  height: 25vh;
+  background-color: #f1f3f5;
+}
+
+.page-banner-header {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.page-banner-link {
+  text-transform: uppercase;
+  margin-right: 4rem;
+}
+
+@media (max-width: 820px) {
+  .page-banner {
+    display: none;
+  }
+}
+
+/* @media (max-width: 440px) {
+  .page-banner {
+    display: none;
+  }
+} */

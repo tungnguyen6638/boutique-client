@@ -1,0 +1,36 @@
+.detail-container {
+  background-color: #f1f3f5;
+}
+
+p {
+  color: #868e96;
+}
+
+.detail > div > p {
+  color: #868e96;
+}
+
+.btn-add {
+  border: none;
+  background-color: #ff922b;
+  color: #f1f3f5;
+}
+
+.long-desc {
+  white-space: pre-wrap;
+}
+
+.description-header {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #f1f3f5;
+  background-color: #212529;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.description-header-3 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #212529;
+}

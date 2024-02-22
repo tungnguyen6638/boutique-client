@@ -1,0 +1,32 @@
+.nav-bar-container {
+  background-color: #f1f3f5;
+}
+
+.nav-bar > div > a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #212529;
+}
+
+.nav-bar > div > a.active {
+  color: #ff922b;
+}
+
+.nav-bar > div > a.logo {
+  font-size: 28px;
+}
+
+.icon {
+  margin-bottom: 6px;
+  margin-right: 6px;
+}
+
+.btn-logout {
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  font-style: italic;
+}
+
+@media (max-width: 440px) {
+}

@@ -1,0 +1,19 @@
+.cart-product-img {
+  width: 50px;
+  height: 50px;
+}
+
+.cart-product-item > td > button {
+  background-color: transparent;
+  border: none;
+}
+
+.cart-product-item > td {
+  font-style: italic;
+}
+
+.quantity::-webkit-outer-spin-button,
+.quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

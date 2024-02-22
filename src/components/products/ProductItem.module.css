@@ -1,0 +1,23 @@
+.item {
+  transform: perspective(100px) translateZ(0px);
+  transition: transform 100ms linear;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+}
+
+.item:hover {
+  cursor: pointer;
+  transform: perspective(100px) translateZ(5px);
+}
+
+.name {
+  color: #212529;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.price {
+  font-size: 1rem;
+  color: #868e96;
+}

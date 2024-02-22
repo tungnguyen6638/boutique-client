@@ -1,0 +1,87 @@
+.popup {
+  position: fixed;
+  right: 3%;
+  bottom: 15%;
+  z-index: 10;
+  background-color: #dee2e6;
+  /* Thêm animation cho popup */
+  animation-duration: 0.5s;
+  animation-name: animate-in;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes animate-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+.main {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 500px;
+  height: 300px;
+}
+
+.main::-webkit-scrollbar {
+  width: 10px;
+  margin-right: 10px;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background-color: #ff922b;
+  border-radius: 12px;
+}
+
+.msg {
+  width: max-content;
+  margin-bottom: 1rem;
+}
+.msg-user {
+  background-color: #ff922b;
+  float: right;
+  clear: right;
+  margin-right: 1rem;
+  text-wrap: wrap;
+}
+.msg-user > p {
+  color: #f1f3f5;
+}
+
+.msg-admin {
+  background-color: #f1f3f5;
+  clear: right;
+  text-wrap: wrap;
+}
+
+.supporter-name {
+  color: #ff922b;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 440px) {
+  .popup {
+    left: 3%;
+  }
+
+  .main {
+    width: auto;
+  }
+
+  .main::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  .msg-user {
+    margin-right: 0;
+  }
+}

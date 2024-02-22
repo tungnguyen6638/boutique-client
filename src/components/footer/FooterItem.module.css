@@ -1,0 +1,12 @@
+.item {
+  list-style: none;
+}
+
+.item > a {
+  text-decoration: none;
+  color: #f1f3f5;
+}
+
+.item > a:hover {
+  color: #ff922b;
+}

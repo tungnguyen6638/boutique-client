@@ -1,0 +1,34 @@
+.categories-container {
+  background-color: #f1f3f5;
+}
+
+.category {
+  transform: perspective(100px) translateZ(0px);
+  transition: transform 100ms linear;
+}
+
+.category:hover {
+  transform: perspective(100px) translateZ(5px);
+}
+
+.categories-headers {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #868e96;
+}
+
+.categories-browse-text {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+@media (max-width: 376px) {
+  .categories-headers {
+    font-size: 0.75rem;
+  }
+
+  .categories-browse-text {
+    font-size: 1rem;
+  }
+}

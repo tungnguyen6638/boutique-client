@@ -1,0 +1,19 @@
+.cart-table-header {
+  color: #212529;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.tbl > thead > tr > th {
+  background-color: #ff922b;
+  color: #f1f3f5;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.btn-group > a {
+  text-decoration: none;
+  border: 1px #ff922b solid;
+  background-color: #ff922b;
+  color: #f1f3f5;
+}

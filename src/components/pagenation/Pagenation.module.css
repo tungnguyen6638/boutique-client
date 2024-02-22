@@ -1,0 +1,16 @@
+.hidden {
+  display: none;
+}
+
+.disable {
+  background-color: #ff922b;
+  color: #f1f3f5;
+}
+
+.btn {
+  background-color: #dee2e6;
+}
+
+.pagenation-el > li {
+  list-style: none;
+}

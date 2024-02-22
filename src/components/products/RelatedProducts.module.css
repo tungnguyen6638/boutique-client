@@ -1,0 +1,14 @@
+.related-product-container {
+  background-color: #f1f3f5;
+}
+
+.related-header {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #212529;
+}
+
+.related-content {
+  overflow: auto;
+  overflow-y: hidden;
+}

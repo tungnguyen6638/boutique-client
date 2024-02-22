@@ -1,0 +1,16 @@
+.footer {
+  background-color: #212529;
+}
+
+.footer-headers > h2 {
+  text-transform: uppercase;
+  color: #f1f3f5;
+}
+
+@media (min-width: 376px) {
+  .footer-container {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
