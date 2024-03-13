@@ -7,7 +7,7 @@ import Popup from "../popup/Popup";
 const RelatedProducts = () => {
   const category = useSelector((state) => state.category.category);
   const data = useRouteLoaderData("root");
-  const relatedProducts = data.data.filter(
+  const relatedProducts = data.products.filter(
     (product) => product.category === category
   );
 
@@ -22,7 +22,7 @@ const RelatedProducts = () => {
           <div className={`d-flex pt-4 ${styles["related-content"]}`}>
             {relatedProducts &&
               relatedProducts.map((product) => (
-                <ProductItem key={product["_id"]["$oid"]} product={product} />
+                <ProductItem key={product._id} product={product} />
               ))}
           </div>
         </div>

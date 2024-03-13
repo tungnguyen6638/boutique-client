@@ -14,7 +14,7 @@ const CartTable = () => {
         <h2 className={`ps-3 pb-4 ${styles["cart-table-header"]}`}>
           Shopping Cart
         </h2>
-        <div className="overflow-scroll">
+        <div className="overflow-auto">
           <table
             className={`text-center text-wrap table table-striped ${styles["tbl"]}`}
           >
@@ -32,10 +32,7 @@ const CartTable = () => {
               {listCart &&
                 listCart.map((cartItem) => {
                   return (
-                    <CartItem
-                      key={cartItem.product["_id"]["$oid"]}
-                      cart={cartItem}
-                    />
+                    <CartItem key={cartItem.product._id} cart={cartItem} />
                   );
                 })}
             </tbody>

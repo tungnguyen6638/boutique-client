@@ -7,13 +7,13 @@ import { useRouteLoaderData } from "react-router-dom";
 
 // Render trang shop
 const ShopProducts = () => {
-  window.scrollTo(0, 0);
+  window.scrollTo(100, 100);
   const data = useRouteLoaderData("root");
   // Lấy category
   const categoryState = useSelector((state) => state.category.category);
   // State để phục vụ việc render những product nào sau khi click vào từng mục category
   const [productsAfterFilter, setProductsAfterFilter] = useState([
-    ...data.data,
+    ...data.products,
   ]);
 
   useEffect(() => {
@@ -22,21 +22,21 @@ const ShopProducts = () => {
     }
     // Nếu category = all thì set products bằng tất cả data product
     if (categoryState === "all") {
-      setProductsAfterFilter(data.data);
+      setProductsAfterFilter(data.products);
     } else {
       // Nếu không thì filter theo category
-      const newProducts = data.data.filter(
+      const newProducts = data.products.filter(
         (product) => product.category === categoryState
       );
       if (newProducts) {
         setProductsAfterFilter(newProducts);
       }
     }
-  }, [categoryState, data.data]);
+  }, [categoryState, data.products]);
 
   return (
     <>
-      <div className="container d-lg-flex gap-5">
+      <div className="container mb-5 d-lg-flex gap-5">
         <CategoriesSideBar />
         <div className="flex-fill">
           <SearchBar />

@@ -1,0 +1,8 @@
+.order-item > td > button {
+  background-color: transparent;
+  border: none;
+}
+
+.order-item > td {
+  font-style: italic;
+}

@@ -56,14 +56,14 @@ const ShopProductsList = memo(({ products }) => {
       {isVisible && <Popup />}
       {firstSixItems && (
         <div className="d-flex flex-column">
-          <div className="d-flex flex-sm-row flex-column align-items-center">
+          <div className="row">
             {firstLineItems.map((product) => (
-              <ProductItem key={product["_id"]["$oid"]} product={product} />
+              <ProductItem key={product._id} product={product} />
             ))}
           </div>
-          <div className="d-flex flex-sm-row flex-column align-items-center">
+          <div className="row">
             {secondLineItems.map((product) => (
-              <ProductItem key={product["_id"]["$oid"]} product={product} />
+              <ProductItem key={product._id} product={product} />
             ))}
           </div>
           <Pagenation totalResults={products.length} segments={segments} />

@@ -11,11 +11,11 @@ const OrderDetail = () => {
             <h3>Your order</h3>
             {listCart &&
               listCart.map((cart) => (
-                <div key={cart.product["_id"]["$oid"]}>
+                <div key={cart.product._id}>
                   <div className="d-flex gap-5 justify-content-between mt-3">
                     <p className="fw-bold">{cart.product.name}</p>
                     <p>
-                      {Number(cart.product.price).toLocaleString("de-DE")} VND x{" "}
+                      {Number(cart.product.price).toLocaleString("de-DE")} VND x
                       {cart.quantity}
                     </p>
                   </div>

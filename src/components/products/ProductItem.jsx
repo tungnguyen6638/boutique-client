@@ -1,24 +1,27 @@
 import styles from "./ProductItem.module.css";
 import { useDispatch } from "react-redux";
 import { popupActions } from "../../store/popupSlice";
+import { fetchUrl } from "../../helper/fetchUrl";
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, page }) => {
   const dispatch = useDispatch();
 
   // Nếu click vào item thì sẽ dispatch tới popupActions trong slice để hiển thị popup
   const popupHandler = () => {
-    dispatch(popupActions.showPopup(product["_id"]["$oid"]));
+    dispatch(popupActions.showPopup(product._id));
   };
 
   return (
     <>
       <button
         onClick={popupHandler}
-        className={`w-75 pt-3 px-1 ${styles["item"]}`}
+        className={`${page === "shop" ? "col-lg-3 col-md-6" : "col-md-4"}  ${
+          styles["item"]
+        }`}
       >
         <picture>
           <img
-            src={product.img1}
+            src={fetchUrl("IMAGE_URL", product.images[0])}
             style={{ height: "200px", width: "200px" }}
             alt={product.name}
           />

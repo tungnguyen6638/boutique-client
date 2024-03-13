@@ -6,11 +6,12 @@ const authenticateInitialState = {
   emailIsValid: false,
   passwordIsValid: false,
   phoneIsValid: false,
+  addressIsValid: false,
   nameIsTouched: true,
   emailIsTouched: true,
   passwordIsTouched: true,
   phoneIsTouched: true,
-  emailIsExist: false,
+  addressIsTouced: true,
 };
 
 const authenticateSlice = createSlice({
@@ -29,9 +30,10 @@ const authenticateSlice = createSlice({
     setPhoneIsTouched(state) {
       state.phoneIsTouched = true;
     },
-    setEmailExist(state) {
-      state.emailIsExist = false;
+    setAddressIsTouched(state) {
+      state.addressIsTouced = true;
     },
+
     fullnameValidation(state, payload) {
       if (payload.payload.trim() !== "") {
         state.nameIsValid = true;
@@ -42,18 +44,7 @@ const authenticateSlice = createSlice({
       }
     },
     emailValidation(state, payload) {
-      const users = JSON.parse(localStorage.getItem("userArr"));
-      let checkExistEmail = false;
-      if (users) {
-        users.forEach((user) => {
-          if (user.email === payload.payload) {
-            checkExistEmail = true;
-            state.emailIsExist = true;
-          }
-        });
-      }
-
-      if (payload.payload.includes("@") && !checkExistEmail) {
+      if (payload.payload.includes("@")) {
         state.emailIsValid = true;
         state.emailIsTouched = false;
       } else {
@@ -62,7 +53,7 @@ const authenticateSlice = createSlice({
       }
     },
     passwordValidation(state, payload) {
-      if (payload.payload.length > 8) {
+      if (payload.payload.length > 8 || payload.payload.trim() !== "") {
         state.passwordIsValid = true;
         state.passwordIsTouched = false;
       } else {
@@ -77,6 +68,15 @@ const authenticateSlice = createSlice({
       } else {
         state.phoneIsValid = false;
         state.phoneIsTouched = false;
+      }
+    },
+    addressValidation(state, payload) {
+      if (payload.payload.length > 5 || payload.payload.trim() !== "") {
+        state.addressIsValid = true;
+        state.addressIsTouced = false;
+      } else {
+        state.addressIsValid = false;
+        state.addressIsTouced = false;
       }
     },
   },

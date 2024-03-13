@@ -5,7 +5,7 @@ import styles from "./SignupForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticateActions } from "../../store/authenticateSlice";
 import { useRef } from "react";
-import { phoneNumberValidate } from "../../helper/phoneNumberValidate";
+import { fetchUrl, fetchData } from "../../helper/fetchUrl";
 
 const SignupForm = () => {
   // Khi submit fail sẽ trả về các giá trị để người dùng biết mình nhập sai cái gì
@@ -34,7 +34,6 @@ const SignupForm = () => {
   const phoneIsTouched = useSelector(
     (state) => state.authenticate.phoneIsTouched
   );
-  const emailIsExist = useSelector((state) => state.authenticate.emailIsExist);
 
   // Tạo ref để lấy giá trị input
   const nameRef = useRef();
@@ -90,7 +89,6 @@ const SignupForm = () => {
                   ref={emailRef}
                   onFocus={() => {
                     dispatch(authenticateActions.setEmailIsTouched());
-                    dispatch(authenticateActions.setEmailExist());
                   }}
                   onBlur={() =>
                     dispatch(
@@ -101,9 +99,7 @@ const SignupForm = () => {
                   }
                 />
                 {!emailIsValid && !emailIsTouched && (
-                  <p className="text-danger">
-                    {!emailIsExist ? "Email is invalid" : "Email is exist"}
-                  </p>
+                  <p className="text-danger">Email is invalid</p>
                 )}
               </div>
               <div className="my-3">
@@ -162,7 +158,7 @@ const SignupForm = () => {
               </div>
 
               <p className={styles["navigate"]}>
-                Already have an account ? <Link>Click</Link>
+                Already have an account ? <Link to="/login">Click</Link>
               </p>
             </Form>
           </Card>
@@ -179,47 +175,28 @@ export async function action({ request, params }) {
   // Lấy data khi submit form. Form của react-router-dom khi submit sẽ không gửi request đến server mà sẽ gửi đến action của Route
   const req = await request.formData();
   const user = {
-    name: req.get("full-name"),
+    username: req.get("full-name"),
     email: req.get("email"),
     password: req.get("password"),
     phone: req.get("phone"),
+    role: "client",
   };
 
-  // Lấy danh sách các users đã có từ localStorage
-  const prevUserArr = JSON.parse(localStorage.getItem("userArr"));
-  // validate email
-  let checkExistEmail = false;
-  if (prevUserArr) {
-    prevUserArr.forEach((u) => {
-      if (u.email === user.email) {
-        checkExistEmail = true;
-      }
-    });
-  }
+  const res = await fetchData({
+    url: fetchUrl("POST_SIGNUP"),
+    method: "POST",
+    body: JSON.stringify(user),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  // Validate các giá trị lần nữa trước khi submit form
-  if (
-    user.name === "" ||
-    !user.email.includes("@") ||
-    user.password.length < 8 ||
-    !phoneNumberValidate(user.phone) ||
-    checkExistEmail
-  ) {
-    // Nếu không vượt qua validate thì sẽ trả về message
-    return { errMessage: "Some informations is invalid ! Please recorrect!!" };
-  }
-
-  // Nếu trong localStorage có mảng user rồi thì thêm tiếp
-  if (prevUserArr) {
-    localStorage.setItem("userArr", JSON.stringify([...prevUserArr, user]));
-    // Nếu không thì thêm mới
+  if (res.hasError) {
+    return { errMessage: res.message };
   } else {
-    localStorage.setItem("userArr", JSON.stringify([user]));
+    // Xuất thông báo đăng kí thành công
+    window.alert(res.message);
+    // Điều hướng tới trang login
+    return redirect("/login");
   }
-
-  // Khi đã vượt qua validate
-  // Xuất thông báo đăng kí thành công
-  window.alert("Sign up success!!");
-  // Điều hướng tới trang login
-  return redirect("/login");
 }

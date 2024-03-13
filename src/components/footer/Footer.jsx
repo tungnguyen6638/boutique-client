@@ -24,7 +24,7 @@ const FOOTER_HEADERS = [
 const Footer = () => {
   return (
     <>
-      <div className={styles["footer"]}>
+      <footer className={`footer ${styles["footer"]}`}>
         <div className="container py-4">
           <div
             className={`d-md-flex px-3 justify-content-between ${styles["footer-container"]}`}
@@ -41,7 +41,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
-      </div>
+      </footer>
     </>
   );
 };

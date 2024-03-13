@@ -6,14 +6,14 @@ import { useParams } from "react-router-dom";
 
 // keyword cho các category
 const CATEGORIES = {
-  iphone: "iphone",
-  ipad: "ipad",
-  macbook: "mac",
-  airpod: "airpod",
-  watch: "watch",
-  mouse: "mouse",
-  keyboard: "keyboard",
-  other: "other",
+  iphone: "Iphone",
+  ipad: "Ipad",
+  macbook: "Mac",
+  airpod: "Airpod",
+  watch: "Watch",
+  mouse: "Mouse",
+  keyboard: "Keyboard",
+  other: "Other",
   all: "all",
 };
 

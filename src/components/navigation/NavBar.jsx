@@ -54,36 +54,28 @@ const NavBar = () => {
               >
                 Shop
               </NavLink>
+              {currentUser && (
+                <NavLink
+                  to="/history"
+                  className={({ isActive }) =>
+                    isActive ? styles["active"] : undefined
+                  }
+                >
+                  History
+                </NavLink>
+              )}
             </div>
-            <div className={`${styles["nav-item-group-2"]} d-sm-inline d-none`}>
-              <Link to="/" className={styles["logo"]}>
-                Boutique
-              </Link>
-            </div>
+            {!currentUser && (
+              <div
+                className={`${styles["nav-item-group-2"]} d-sm-inline d-none`}
+              >
+                <Link to="/" className={styles["logo"]}>
+                  Boutique
+                </Link>
+              </div>
+            )}
 
             <div className="d-flex gap-sm-3 gap-4">
-              <NavLink
-                to="/cart"
-                className={({ isActive }) =>
-                  isActive ? styles["active"] : undefined
-                }
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className={`bi bi-cart3 ${styles["icon"]}`}
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                </svg>
-                Cart
-                <span className="ms-1 px-2 py-1 bg-light rounded border border-warning">
-                  {total}
-                </span>
-              </NavLink>
-
               {!currentUser && (
                 <NavLink
                   to="/login"
@@ -110,6 +102,28 @@ const NavBar = () => {
               )}
               {currentUser && (
                 <>
+                  <NavLink
+                    to="/cart"
+                    className={({ isActive }) =>
+                      isActive ? styles["active"] : undefined
+                    }
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className={`bi bi-cart3 ${styles["icon"]}`}
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                    </svg>
+                    Cart
+                    <span className="ms-1 px-2 py-1 bg-light rounded border border-warning">
+                      {total}
+                    </span>
+                  </NavLink>
+
                   <Link to="/">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -125,8 +139,8 @@ const NavBar = () => {
                         d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
                       />
                     </svg>
-                    {currentUser.name.split(" ")[0]}
-                    <svg
+                    {currentUser.username}
+                    {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -135,7 +149,7 @@ const NavBar = () => {
                       viewBox="0 0 16 16"
                     >
                       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                    </svg>
+                    </svg> */}
                   </Link>
                   <Form action="/logout" method="post">
                     <button className={`px-0 ${styles["btn-logout"]}`}>

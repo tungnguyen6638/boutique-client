@@ -1,8 +1,34 @@
 import { redirect } from "react-router-dom";
 
-// Hàm để phục vụ việc lấy user trong localStorage
+// Lấy cookie theo tên
+export function getCookie(cname) {
+  let name = cname + "=";
+  const ca = document.cookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+// Hàm để phục vụ việc lấy user trong cookies
 export function getUser() {
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const currentUser =
+    getCookie("username").length !== 0 ||
+    getCookie("email").length !== 0 ||
+    getCookie("password").length !== 0
+      ? {
+          username: getCookie("username"),
+          email: getCookie("email"),
+          password: getCookie("password"),
+        }
+      : null;
+
   return currentUser;
 }
 

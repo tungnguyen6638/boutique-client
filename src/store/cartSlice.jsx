@@ -23,10 +23,7 @@ const cartSlice = createSlice({
         state.listCart.forEach((cart, index) => {
           // Nếu item trong list cart có id bằng với id của payload (tức là item đã tồn tại rồi) thì sẽ gán biến itemExist là có item
           // đồng thời sửa lại item trong listCart có index bằng index đang lặp các thông tin của payload mới add vào
-          if (
-            cart.product["_id"]["$oid"] ===
-            payload.payload.product["_id"]["$oid"]
-          ) {
+          if (cart.product._id === payload.payload.product._id) {
             itemExist = true;
             state.listCart[index] = {
               product: cart.product,
@@ -46,9 +43,7 @@ const cartSlice = createSlice({
     },
     updateCart(state, payload) {
       state.listCart.forEach((cart, index) => {
-        if (
-          cart.product["_id"]["$oid"] === payload.payload.product["_id"]["$oid"]
-        ) {
+        if (cart.product._id === payload.payload.product._id) {
           state.listCart[index] = {
             product: cart.product,
             quantity: payload.payload.quantity,
@@ -60,9 +55,7 @@ const cartSlice = createSlice({
     },
     deleteCart(state, payload) {
       state.listCart.forEach((cart, index) => {
-        if (
-          cart.product["_id"]["$oid"] === payload.payload.product["_id"]["$oid"]
-        ) {
+        if (cart.product._id === payload.payload.product._id) {
           state.listCart.splice(index, 1);
         }
       });

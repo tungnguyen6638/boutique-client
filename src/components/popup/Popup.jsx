@@ -3,6 +3,7 @@ import { Link, useRouteLoaderData } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { popupActions } from "../../store/popupSlice";
+import { fetchUrl } from "../../helper/fetchUrl";
 
 const Popup = () => {
   const productId = useSelector((state) => state.popup.productId);
@@ -14,9 +15,7 @@ const Popup = () => {
     // Mỗi khi render component hơajc khi các dependencies (productId, data) thay đổi thì sẽ set lại product hiện tại
     // để render. Product hiện tại là product có id bằng với item có id như trên trong list data
     setCurrentProduct(
-      data.data.filter(
-        (product) => product["_id"]["$oid"] === productId && product
-      )[0]
+      data.products.filter((product) => product._id === productId && product)[0]
     );
   }, [productId, data]);
 
@@ -26,7 +25,7 @@ const Popup = () => {
 
   return (
     <>
-      {currentProduct && (
+      {currentProduct.name && (
         <>
           <div className={styles["overlay"]} onClick={closePopupHandler}></div>
           <div className={`p-md-5 ${styles["current-product"]}`}>
@@ -49,7 +48,7 @@ const Popup = () => {
               </button>
               <div className="w-50">
                 <img
-                  src={currentProduct.img1}
+                  src={fetchUrl("IMAGE_URL", currentProduct.images[0])}
                   alt="Product detail"
                   className="img-fluid"
                 />

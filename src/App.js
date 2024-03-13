@@ -12,6 +12,8 @@ import { action as registerAction } from "./components/authenticate/SignupForm.j
 import { action as loginAction } from "./components/authenticate/SigninForm.jsx";
 import { action as logoutAction } from "./pages/Logout.jsx";
 import { checkAuth } from "./helper/getUser.jsx";
+import History from "./pages/History.jsx";
+import HistoryDetail from "./components/history/HistoryDetail.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,6 +41,8 @@ function App() {
           element: <RegisterPage />,
           action: registerAction,
         },
+        { path: "history", element: <History /> },
+        { path: "order-detail/:orderId", element: <HistoryDetail /> },
         { path: "/logout", action: logoutAction },
       ],
     },

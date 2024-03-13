@@ -2,6 +2,7 @@ import styles from "./CartItem.module.css";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store/cartSlice";
 import { useEffect } from "react";
+import { fetchUrl } from "../../helper/fetchUrl";
 
 const CartItem = ({ cart }) => {
   // Tạo dispatch
@@ -13,7 +14,7 @@ const CartItem = ({ cart }) => {
     if (cart.quantity === 0) {
       dispatch(cartActions.deleteCart(cart));
     }
-  }, [cart.quantity]);
+  }, [cart, dispatch]);
 
   // Xử lý tăng quantity
   const increaseQuantityHanlder = () => {
@@ -52,7 +53,7 @@ const CartItem = ({ cart }) => {
       <tr className={`${styles["cart-product-item"]}`}>
         <td className={`${styles["cart-product-img"]}`}>
           <img
-            src={cart.product.img1}
+            src={`${fetchUrl("IMAGE_URL", cart.product.images[0])}`}
             alt={cart.product.name}
             className="img-fluid "
           />

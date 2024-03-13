@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const categoryInitialState = {
-  category: "",
+  category: "all",
 };
 
 const categorySlice = createSlice({
@@ -12,28 +12,28 @@ const categorySlice = createSlice({
       state.category = "all";
     },
     iphoneCategory(state) {
-      state.category = "iphone";
+      state.category = "Iphone";
     },
     ipadCategory(state) {
-      state.category = "ipad";
+      state.category = "Ipad";
     },
     macCategory(state) {
-      state.category = "mac";
+      state.category = "Mac";
     },
     watchCategory(state) {
-      state.category = "watch";
+      state.category = "Watch";
     },
     airpodCategory(state) {
-      state.category = "airpod";
+      state.category = "Airpod";
     },
     mouseCategory(state) {
-      state.category = "mouse";
+      state.category = "Mouse";
     },
     keyboardCategory(state) {
-      state.category = "keyboard";
+      state.category = "Keyboard";
     },
     otherCategory(state) {
-      state.category = "other";
+      state.category = "Other";
     },
     setCategory(state, payload) {
       state.category = payload.payload;
