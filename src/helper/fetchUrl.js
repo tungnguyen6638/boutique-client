@@ -1,6 +1,6 @@
 // Hàm lấy các URL để fetch
 export function fetchUrl(functionality, params) {
-  const serverDomain = "https://52.41.36.82";
+  const serverDomain = "https://boutique-server-5jmg.onrender.com";
   let url = serverDomain;
   switch (functionality) {
     case "GET_PRODUCTS":
